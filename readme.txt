@@ -1,4 +1,4 @@
-=== SW Ajax Search Plugin ===
+=== SW Ajax Search ===
 Contributors: gauravjoshi
 Donate link: https://statelyworld.com/
 Tags: ajax search, search form, 

@@ -106,6 +106,16 @@ function sw_ajax_search_enqueue_styles()
 	// Use plugins_url to get the correct path to your CSS file
 	// die(plugins_url( 'assets/css/sw-ajax-search-style.css', __FILE__ ) );
 	wp_enqueue_style('sw-ajax-search-styles', plugins_url('assets/css/sw-ajax-search-style.css', __FILE__));
+	
+
+	 // The handle name used when Font Awesome was registered or enqueued.
+	 $font_awesome_handle = 'font-awesome'; // Example handle, adjust based on actual handle name if known.
+
+	 // Check if Font Awesome is already enqueued.
+	 if (!wp_style_is($font_awesome_handle, 'enqueued')) {
+		 // Since Font Awesome is not enqueued, enqueue it here.
+		 wp_enqueue_style('font-awesome-free', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+	 }
 
 	// Correctly enqueue your JavaScript file
 	wp_enqueue_script(

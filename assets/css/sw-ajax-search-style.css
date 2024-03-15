@@ -1,30 +1,71 @@
 .sw_ajax_search_form_wrap {
-    background: #242424;
-    color: #ffffff;
-    padding: 10px;
-    border-radius: 10px;
-}
-
-.sw_ajax_search_form_wrap select {
-    width: 100%;
-}
-
-.sw_ajax_search_form_wrap input[type=text], .sw_ajax_search_form_wrap input[type=time] {
-    border: 1px solid #d2d2d2;
-    font-size: 13px;
-    color: #747474;
-    padding: 8px 15px;
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.article_list_202105030749 {
-    margin: 10px 0px;
-    font-size: 14px;
-    padding: 0 10px;
-    cursor: pointer;
-}
-
-.sw_ajax_search_form_wrap a:link, .sw_ajax_search_form_wrap a:visited {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #333;
     color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.form-inline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px;
+}
+.form-group {
+    width: 100%;
+}
+.form-group.mb-2 {
+    margin-bottom: 1rem!important;
+}
+select.categoryfilter, input[type="text"]#search {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #555;
+    background-color: #222;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 16px;
+}
+input[type="radio"] + i.fa {
+    margin-right: 5px;
+    color: #fff;
+}
+label {
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+}
+#response_wrap {
+    margin-top: 20px;
+    text-align: center;
+}
+img#loder_img {
+    margin-top: 10px;
+}
+.form-inline label input[type="radio"] {
+    margin-right: 8px;
+}
+
+.sw_ajax_search_form_wrap a {
+    color: #4da6ff; /* Bright blue color for links to stand out */
+    text-decoration: none; /* Removes underline from links */
+    transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sw_ajax_search_form_wrap a:hover, .sw_ajax_search_form_wrap a:focus {
+    color: #e6e6e6; /* Lighter color on hover/focus for visibility */
+    text-decoration: underline; /* Adds underline on hover/focus for emphasis */
+}
+
+li.article_list_202105030749 {
+    text-align: left;
+}
+
+
+.sw_ajax_search_form_wrap .form-group {
+    width: 49%;
 }

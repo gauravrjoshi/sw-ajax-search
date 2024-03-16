@@ -62,22 +62,35 @@ jQuery(function ($) {
         console.log(data);
         $("#loder_img").hide(); // changing the button label back
         $("#response").show();
-        let html = `<ul id="slider-id" class="slider-class">`;
-        for (let index = 0; index < data.length; index++) {
-          const date = data[index].date;
-          const status = data[index].status;
-          const title = data[index].title;
-          const url = data[index].url;
-          console.table([date, status, title, url]);
-          html += `<li><a href="${url}" rel="bookmark" target="_blank">${title} ${status}  <span style="color: #ef7f1a;">${date}</span></a></li>`;
+        if (data.length > 0) {
+          let html = `<ul id="slider-id" class="slider-class">`;
+          for (let index = 0; index < data.length; index++) {
+            const date = data[index].date;
+            const status = data[index].status;
+            const title = data[index].title;
+            const url = data[index].url;
+            console.table([date, status, title, url]);
+            html += `<li><a href="${url}" rel="bookmark" target="_blank">${title} <span style="color: #ef7f1a;">(${date})</span></a></li>`;
+          }
+          html += "</ul>";
+          $("#response").html(html); // insert data
+        } else {
+          $("#response").html(`<h2 style='color:#ffffff;'>Nothing Found</h2>`); // insert data
         }
-        html += '</ul>';
-        $("#response").html(html); // insert data
+
         jQuery(".send_post_request").text(jQuery("input#search").val());
       },
     });
     return false;
   });
+
+
+  jQuery("#clearSearch").on("click", function () {
+    jQuery("#search").val(""); // Clear the search input
+    jQuery("div#response").empty()
+    jQuery("#search").focus(); // Optionally, bring focus back to the search input
+  });
+  
 });
 
 function copyToClipboard(text, id) {
@@ -101,8 +114,3 @@ function copyToClipboard(text, id) {
   }, 2000);
 }
 
-//
-document.getElementById("clearSearch").addEventListener("click", function () {
-  document.getElementById("search").value = ""; // Clear the search input
-  document.getElementById("search").focus(); // Optionally, bring focus back to the search input
-});

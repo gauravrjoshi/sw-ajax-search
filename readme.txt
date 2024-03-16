@@ -55,6 +55,9 @@ Yes, you can customize the search form by modifying the plugin's CSS or by using
 Yes, SW Ajax Search works with custom post types out of the box.
 
 == Changelog ==
+= 1.7.4 =
+* Design Improvements
+
 = 1.7.3 =
 * Dependency issue Fixed
 

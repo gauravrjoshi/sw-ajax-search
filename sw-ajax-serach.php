@@ -17,53 +17,8 @@ Author URI: https://statelyworld.com/
 function sw_ajax_search_form_func($atts)
 {
 	ob_start();
-?>
-	<div class="sw_ajax_search_form_wrap box_shadow_sw">
-		<form class="form-inline" action="<?php echo esc_url(site_url('/wp-admin/admin-ajax.php')); ?>" method="POST" id="filter" autocomplete="off">
-
-
-			<div class="form-group mb-2">
-				<?php
-				if ($terms = get_terms(array('taxonomy' => 'category', 'orderby' => 'name'))) :
-
-					echo '<select name="categoryfilter" class="categoryfilter">';
-					echo '<option value="" selected>All Categories</option>';
-					foreach ($terms as $term) :
-						$selectd = $term->term_id == 1630 ? 'selected' : '';
-						echo '<option value="' . esc_attr($term->term_id) . '" ' . esc_attr($selectd) . '>' . esc_html($term->name) . '</option>';
-
-					endforeach;
-					echo '</select>';
-				endif;
-				?>
-			</div>
-			<div class="form-group mb-2">
-				<label style="margin: 10px;display: inline-block;">
-					<input type="radio" name="date" value="ASC" /> <i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
-				</label>
-				<label style="margin: 10px;display: inline-block;">
-					<input type="radio" name="date" value="DESC" selected="selected" /> <i class="fa fa-arrow-circle-up" aria-hidden="true"></i>
-				</label>
-			</div>
-			<div class="row">
-				<div class="col-sm-12">
-					<input type="text" name="search" id="search" value="" placeholder="Search latest articles here...">
-				</div>
-			</div>
-			<?php wp_nonce_field('statelyworld_post_request_action', 'statelyworld_post_request'); ?>
-			<input type="hidden" name="action" value="statelyworld_articale_filter">
-		</form>
-		<div id="response_wrap">
-			<?php $image_url = plugins_url('assets/img/sw-loader.gif', __FILE__);
-			echo '<img id="loder_img" src="' . esc_url($image_url) . '" alt="Description" style="display: block;margin: auto;">';
-			?>
-			<div id="response">
-
-			</div>
-
-		</div>
-	</div>
-<?php
+	// Include the HTML file. Adjust the path as needed.
+	include(plugin_dir_path(__FILE__) . 'sw-search-form.php');
 
 	return ob_get_clean();
 }
@@ -106,16 +61,16 @@ function sw_ajax_search_enqueue_styles()
 	// Use plugins_url to get the correct path to your CSS file
 	// die(plugins_url( 'assets/css/sw-ajax-search-style.css', __FILE__ ) );
 	wp_enqueue_style('sw-ajax-search-styles', plugins_url('assets/css/sw-ajax-search-style.css', __FILE__));
-	
 
-	 // The handle name used when Font Awesome was registered or enqueued.
-	 $font_awesome_handle = 'font-awesome'; // Example handle, adjust based on actual handle name if known.
 
-	 // Check if Font Awesome is already enqueued.
-	 if (!wp_style_is($font_awesome_handle, 'enqueued')) {
-		 // Since Font Awesome is not enqueued, enqueue it here.
-		 wp_enqueue_style('font-awesome-free', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
-	 }
+	// The handle name used when Font Awesome was registered or enqueued.
+	$font_awesome_handle = 'font-awesome'; // Example handle, adjust based on actual handle name if known.
+
+	// Check if Font Awesome is already enqueued.
+	if (!wp_style_is($font_awesome_handle, 'enqueued')) {
+		// Since Font Awesome is not enqueued, enqueue it here.
+		wp_enqueue_style('font-awesome-free', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+	}
 
 	// Correctly enqueue your JavaScript file
 	wp_enqueue_script(

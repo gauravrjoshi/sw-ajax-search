@@ -133,3 +133,13 @@ function copyToClipboard(text, id) {
     jQuery(`[data_copy_id='${id}'`).text("").show();
   }, 2000);
 }
+
+
+// 
+document.getElementById('clearSearch').addEventListener('click', function() {
+    document.getElementById('search').value = ''; // Clear the search input
+    document.getElementById('search').focus(); // Optionally, bring focus back to the search input
+});
+
+
+

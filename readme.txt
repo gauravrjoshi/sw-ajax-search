@@ -2,10 +2,10 @@
 Contributors: gauravjoshi
 Donate link: https://statelyworld.com/
 Tags: ajax search, search form, 
-Tested up to: 1.7.0
-Requires at least:  1.7.2
-Requires PHP: 7.2
-Stable tag: 1.7.2
+Tested up to: 1.7.5
+Requires at least:  1.7.5
+Requires PHP: 8.2.4
+Stable tag: 1.7.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 

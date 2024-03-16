@@ -29,7 +29,6 @@ jQuery(document).ready(function () {
     jQuery(this).next().toggle();
   });
 
-
   // Accordian
   var action = "click";
   var speed = "500";
@@ -48,69 +47,37 @@ jQuery(document).ready(function () {
 
 jQuery(function ($) {
   $("#loder_img").hide();
-  $('select[name="categoryfilter"], input[name="date"], input#search').on(
-    "change, input",
-    function () {
-      var filter = $("#filter");
-      $.ajax({
-        url: filter.attr("action"),
-        data: filter.serialize(), // form data
-        type: filter.attr("method"), // POST
-        beforeSend: function (xhr) {
-          $("#loder_img").show(); // changing the button label
-          $("#response").hide();
-        },
-        success: function (data) {
-          $("#loder_img").hide(); // changing the button label back
-          $("#response").show();
-          $("#response").html(data); // insert data
-          jQuery(".send_post_request").text(jQuery("input#search").val());
-          jQuery(".send_post_request_button").click(function () {
-            $.ajax({
-              url: filter.attr("action"),
-              data: {
-                action: "statelyworld_post_request",
-                post_title: jQuery("input#search").val(),
-              }, // form data
-              type: filter.attr("method"), // POST
-              beforeSend: function (xhr) {
-                jQuery(".send_post_request_button").text("Sending...");
-              },
-              success: function (data) {
-                jQuery(".send_post_request_button").text(data);
-                jQuery(".send_post_request_button").attr(
-                  "style",
-                  "margin: 10px auto;display: block;background: green;color: #ffffff;padding: 10px;border-radius: 10px;"
-                );
-                jQuery("button.send_post_request_button").attr(
-                  "disabled",
-                  true
-                );
-              },
-            });
-          });
-        },
-      });
-      return false;
-    }
-  );
-
-  if (jQuery('select[name="categoryfilter"]').val() == "") {
+  $("input#search").on("change, input", function () {
     var filter = $("#filter");
+    console.log(filter.serialize());
     $.ajax({
       url: filter.attr("action"),
-      data: filter.serialize(), // form data
+      data: filter.serialize() + "&security=" + sw_ajax_search_params.nonce, // form data
       type: filter.attr("method"), // POST
       beforeSend: function (xhr) {
         $("#loder_img").show(); // changing the button label
+        $("#response").hide();
       },
       success: function (data) {
+        console.log(data);
         $("#loder_img").hide(); // changing the button label back
-        $("#response").html(data); // insert data
+        $("#response").show();
+        let html = `<ul id="slider-id" class="slider-class">`;
+        for (let index = 0; index < data.length; index++) {
+          const date = data[index].date;
+          const status = data[index].status;
+          const title = data[index].title;
+          const url = data[index].url;
+          console.table([date, status, title, url]);
+          html += `<li><a href="${url}" rel="bookmark" target="_blank">${title} ${status}  <span style="color: #ef7f1a;">${date}</span></a></li>`;
+        }
+        html += '</ul>';
+        $("#response").html(html); // insert data
+        jQuery(".send_post_request").text(jQuery("input#search").val());
       },
     });
     return false;
-  }
+  });
 });
 
 function copyToClipboard(text, id) {
@@ -134,12 +101,8 @@ function copyToClipboard(text, id) {
   }, 2000);
 }
 
-
-// 
-document.getElementById('clearSearch').addEventListener('click', function() {
-    document.getElementById('search').value = ''; // Clear the search input
-    document.getElementById('search').focus(); // Optionally, bring focus back to the search input
+//
+document.getElementById("clearSearch").addEventListener("click", function () {
+  document.getElementById("search").value = ""; // Clear the search input
+  document.getElementById("search").focus(); // Optionally, bring focus back to the search input
 });
-
-
-

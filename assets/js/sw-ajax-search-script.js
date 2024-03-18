@@ -47,41 +47,50 @@ jQuery(document).ready(function () {
 
 jQuery(function ($) {
   $("#loder_img").hide();
-  $("input#search").on("change, input", function () {
-    var filter = $("#filter");
-    console.log(filter.serialize());
-    $.ajax({
-      url: filter.attr("action"),
-      data: filter.serialize() + "&security=" + sw_ajax_search_params.nonce, // form data
-      type: filter.attr("method"), // POST
-      beforeSend: function (xhr) {
-        $("#loder_img").show(); // changing the button label
-        $("#response").hide();
-      },
-      success: function (data) {
-        console.log(data);
-        $("#loder_img").hide(); // changing the button label back
-        $("#response").show();
-        if (data.length > 0) {
-          let html = `<ul id="slider-id" class="slider-class">`;
-          for (let index = 0; index < data.length; index++) {
-            const date = data[index].date;
-            const status = data[index].status;
-            const title = data[index].title;
-            const url = data[index].url;
-            console.table([date, status, title, url]);
-            html += `<li><a href="${url}" rel="bookmark" target="_blank">${title} <span style="color: #ef7f1a;">(${date})</span></a></li>`;
-          }
-          html += "</ul>";
-          $("#response").html(html); // insert data
-        } else {
-          $("#response").html(`<h2 style='color:#ffffff;'>Nothing Found</h2>`); // insert data
-        }
 
-        jQuery(".send_post_request").text(jQuery("input#search").val());
-      },
-    });
-    return false;
+  $("input#search").on("change, input", function () {
+    var inputVal = $(this).val().trim(); // Get the current value of the input field.
+    if (inputVal.length >= 1) {
+      // Check if the length of the input is exactly 3.
+      var filter = $("#filter");
+      console.log(filter.serialize());
+      $.ajax({
+        url: filter.attr("action"),
+        data: filter.serialize() + "&security=" + sw_ajax_search_params.nonce, // form data
+        type: filter.attr("method"), // POST
+        beforeSend: function (xhr) {
+          $("#loder_img").show(); // changing the button label
+          $("#response").hide();
+        },
+        success: function (data) {
+          console.log(data);
+          $("#loder_img").hide(); // changing the button label back
+          $("#response").show();
+          if (data.length > 0) {
+            let html = `<ul id="slider-id" class="slider-class">`;
+            for (let index = 0; index < data.length; index++) {
+              const date = data[index].date;
+              const status = data[index].status;
+              const title = data[index].title;
+              const url = data[index].url;
+              console.table([date, status, title, url]);
+              html += `<li><a href="${url}" rel="bookmark" target="_blank">${title} <span style="color: #ef7f1a;">(${date})</span></a></li>`;
+            }
+            html += "</ul>";
+            $("#response").html(html); // insert data
+          } else {
+            $("#response").html(
+              `<h2 style='color:#ffffff;'>Nothing Found</h2>`
+            ); // insert data
+          }
+
+          jQuery(".send_post_request").text(jQuery("input#search").val());
+        },
+      });
+      return false;
+    } else {
+      $("#response").empty();
+    }
   });
 
   jQuery("#clearSearch").on("click", function () {

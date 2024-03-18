@@ -1,6 +1,5 @@
 .sw_ajax_search_form_wrap {
   margin: auto;
-  background: #333;
   color: #fff;
   border-radius: 8px;
 }
@@ -53,14 +52,14 @@ img#loder_img {
 }
 
 .sw_ajax_search_form_wrap a {
-  color: #4da6ff; /* Bright blue color for links to stand out */
+  color: #000000; /* Bright blue color for links to stand out */
   text-decoration: none; /* Removes underline from links */
   transition: color 0.3s ease; /* Smooth transition for hover effect */
 }
 
 .sw_ajax_search_form_wrap a:hover,
 .sw_ajax_search_form_wrap a:focus {
-  color: #e6e6e6; /* Lighter color on hover/focus for visibility */
+  color: #4da6ff; /* Lighter color on hover/focus for visibility */
   text-decoration: underline; /* Adds underline on hover/focus for emphasis */
 }
 
@@ -79,17 +78,6 @@ li.article_list_202105030749 {
   flex-wrap: wrap;
 }
 
-.popup-link a {
-  background: #333;
-  color: #fff;
-  padding: 10px 30px;
-  border-radius: 5px;
-  font-size: 17px;
-  cursor: pointer;
-  margin: 20px;
-  text-decoration: none;
-}
-
 .popup-container {
   visibility: hidden;
   opacity: 0;
@@ -106,13 +94,17 @@ li.article_list_202105030749 {
   align-items: center;
 }
 .popup-content {
-  background-color: #333;
   margin: auto;
   padding: 20px;
-  border: 1px solid #333;
   border-radius: 10px;
   width: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  background-color: #f8fafe;
+  background-image: url(../img/backgroud-img.svg);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  box-shadow: 0px 8px 30px 0px rgba(0, 58.00000000000005, 140, 0.22);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
 }
 .popup-content p {
   font-size: 17px;
@@ -267,8 +259,35 @@ li.article_list_202105030749 {
 
 ul#slider-id {
   text-align: left;
+  list-style-type: disclosure-closed;
+  color: #ef801c;
 }
 
 ul#slider-id a {
   text-decoration: none;
+}
+
+#toggleButton {
+  position: fixed; /* Make it float */
+  bottom: 20px; /* Distance from the bottom */
+  right: 20px; /* Distance from the right */
+  z-index: 1000; /* Ensure it stays on top */
+
+  background-color: #007bff; /* Bootstrap primary blue, you can change it */
+  color: white; /* Icon color */
+  border-radius: 50%; /* Circle shape */
+  width: 50px; /* Width */
+  height: 50px; /* Height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for better visibility */
+}
+
+#toggleButton a {
+  color: white; /* Ensure the link inside the button is also white */
+}
+
+#toggleButton i {
+  font-size: 20px; /* Adjust icon size */
 }

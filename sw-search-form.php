@@ -1,10 +1,12 @@
 <div id="sw-ajax-search-form-wrapper">
-    <div id="toggleButton" style="cursor: pointer;" class="popup-link">
-        <a href="#popup2"><i class="fas fa-search"></i></a>
-    </div>
+    <a href="#popup2">
+        <div id="toggleButton" style="cursor: pointer;" class="popup-link">
+           <i class="fas fa-search"></i>
+        </div>
+    </a>
     <div id="popup2" class="popup-container popup-style-2">
         <div class="popup-content">
-            <a href="#" class="close">&times;</a>
+            <!-- <a href="#" class="close">&times;</a> -->
             <div class="sw_ajax_search_form_wrap box_shadow_sw">
                 <form class="form-inline" action="<?php echo esc_url(site_url('/wp-admin/admin-ajax.php')); ?>" method="POST" id="filter" autocomplete="off">
                     <div class="search-input-wrapper">

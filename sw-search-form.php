@@ -1,19 +1,19 @@
 <div id="sw-ajax-search-form-wrapper">
     <a href="#popup2">
-        <div id="toggleButton" style="cursor: pointer;" class="popup-link">
-           <i class="fas fa-search"></i>
+        <div id="toggleButton" class="popup-link">
+            <i class="fas fa-search"></i>
         </div>
     </a>
     <div id="popup2" class="popup-container popup-style-2">
         <div class="popup-content">
-            <!-- <a href="#" class="close">&times;</a> -->
+            <a href="#" class="close">&times;</a>
             <div class="sw_ajax_search_form_wrap box_shadow_sw">
-                <form class="form-inline" action="<?php echo esc_url(site_url('/wp-admin/admin-ajax.php')); ?>" method="POST" id="filter" autocomplete="off">
+                <form class="form-inline" action="#" method="POST" id="filter" autocomplete="off">
                     <div class="search-input-wrapper">
-                        <input type="text" name="search" id="search" value="" placeholder="">
+                        <input type="text" name="search" id="search" value="" placeholder="Search...">
                         <button id="clearSearch" title="Clear">✕</button>
                         <?php $image_url = plugins_url('assets/img/sw-loader.gif', __FILE__);
-                        echo '<img id="loder_img" src="' . esc_url($image_url) . '" alt="Description" style="display: block;margin: auto;">';
+                        echo '<img id="loader_img" src="' . esc_url($image_url) . '" alt="Description" style="display: block;margin: auto;">';
                         ?>
                         <label for="search">
                             <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

@@ -54,15 +54,28 @@ function stately_world_article_filter_function()
 	$search = sanitize_text_field($_POST['search']);
 	$order = isset($_POST['date']) ? sanitize_text_field($_POST['date']) : 'DESC';
 
-	// Define the query
+
+	// Get the current user's roles
+	$user = wp_get_current_user();
+	$user_roles = $user->roles;
+
+	// Check if the user has the 'administrator' role
+	$is_admin = in_array('administrator', $user_roles);
+
+	// Define the query args
 	$args = array(
-		'orderby' => 'date',
-		'order' => $order,
+		'orderby'        => 'date',
+		'order'          => $order,
 		'posts_per_page' => 10,
-		'post_status' => array('publish', 'private', 'draft'),
-		's' => $search
+		'post_status'    => array('publish'),
+		's'              => $search,
 	);
 
+	// If user is an admin, include 'private' and 'draft' post statuses
+	if ($is_admin) {
+		$args['post_status'][] = 'private';
+		$args['post_status'][] = 'draft';
+	}
 
 	$query = new WP_Query($args);
 	$data = [];

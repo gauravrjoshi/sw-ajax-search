@@ -5,7 +5,7 @@
  * Plugin URI: https://wordpress.org/plugins/sw-ajax-search
  * Description: Shortcode -> [sw_ajax_search_form]
  * Author: Gaurav Joshi
- * Version: 1.7.5
+ * Version: 1.7.6
  * Author URI: https://statelyworld.com/
  */
 

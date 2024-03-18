@@ -2,10 +2,10 @@
 Contributors: gauravjoshi
 Donate link: https://statelyworld.com/
 Tags: ajax search, search form, 
-Tested up to: 1.7.5
-Requires at least:  1.7.5
+Tested up to: 1.7.6
+Requires at least:  1.7.6
 Requires PHP: 8.2.4
-Stable tag: 1.7.5
+Stable tag: 1.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ Yes, you can customize the search form by modifying the plugin's CSS or by using
 Yes, SW Ajax Search works with custom post types out of the box.
 
 == Changelog ==
+= 1.7.6 =
+* More Design Improvements
+
 = 1.7.5 =
 * Major changes related to security 
 

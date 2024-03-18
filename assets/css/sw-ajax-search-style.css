@@ -42,7 +42,11 @@ label {
   text-align: center;
 }
 img#loder_img {
-  margin-top: 10px;
+  position: relative;
+  right: 42px;
+  top: 0;
+  z-index: 99999999999999999999999999;
+  width: 41px;
 }
 .form-inline label input[type="radio"] {
   margin-right: 8px;
@@ -116,17 +120,17 @@ li.article_list_202105030749 {
   line-height: 20px;
 }
 .popup-content a.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    background: none;
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    position: relative;
-    top: -24px;
-    right: -12px;
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  position: relative;
+  top: -24px;
+  right: -12px;
 }
 
 .popup-content a.close:hover {
@@ -153,24 +157,22 @@ li.article_list_202105030749 {
 
 /* Additional styles */
 .popup-style-2 {
-    opacity: 0; /* Start with opacity 0 to ensure it's invisible before animation starts */
-    animation-name: fadeInOpacity;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-in-out; /* Adjusted for smoother transition */
-    animation-duration: 0.5s; /* Adjusted for a quicker, smoother effect */
-    animation-fill-mode: forwards; /* Ensures the element remains visible after animation */
+  opacity: 0; /* Start with opacity 0 to ensure it's invisible before animation starts */
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out; /* Adjusted for smoother transition */
+  animation-duration: 0.5s; /* Adjusted for a quicker, smoother effect */
+  animation-fill-mode: forwards; /* Ensures the element remains visible after animation */
 }
 
 @keyframes fadeInOpacity {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-
-
 
 .row {
   margin: 0;
@@ -180,7 +182,7 @@ li.article_list_202105030749 {
 .search-input-wrapper {
   position: relative;
   width: 100%;
-  margin: 20px auto;
+  margin: 2px auto;
   display: flex;
 }
 
@@ -263,11 +265,10 @@ li.article_list_202105030749 {
   outline: none; /* Remove the default focus outline */
 }
 
-
 ul#slider-id {
-    text-align: left;
+  text-align: left;
 }
 
 ul#slider-id a {
-    text-decoration: none;
+  text-decoration: none;
 }

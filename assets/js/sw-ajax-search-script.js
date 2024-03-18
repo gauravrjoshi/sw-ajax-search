@@ -84,13 +84,11 @@ jQuery(function ($) {
     return false;
   });
 
-
   jQuery("#clearSearch").on("click", function () {
     jQuery("#search").val(""); // Clear the search input
-    jQuery("div#response").empty()
+    jQuery("div#response").empty();
     jQuery("#search").focus(); // Optionally, bring focus back to the search input
   });
-  
 });
 
 function copyToClipboard(text, id) {
@@ -113,4 +111,3 @@ function copyToClipboard(text, id) {
     jQuery(`[data_copy_id='${id}'`).text("").show();
   }, 2000);
 }
-

@@ -242,8 +242,10 @@ li.article_list_202105030749 {
 
 ul#slider-id {
   text-align: left;
-  list-style-type: disclosure-closed;
-  color: #ef801c;
+	list-style-type: disclosure-closed;
+	color: #ef801c;
+	padding-left: 18px;
+	font-size: 18px;
 }
 
 ul#slider-id a {

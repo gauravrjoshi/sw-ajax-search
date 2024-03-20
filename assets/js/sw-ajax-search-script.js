@@ -60,6 +60,21 @@ jQuery(function ($) {
     jQuery("#search").val(""); // Clear the search input
     jQuery("div#response").empty();
     jQuery("#search").focus(); // Optionally, bring focus back to the search input
+  });
 
+  var $slider = $("#slider");
+  var $toggleButton = $("#toggle-button");
+  var $icon = $toggleButton.find("i"); // Find the <i> inside $toggleButton
+
+  $toggleButton.click(function () {
+    console.log($slider.attr("class"));
+    if ($slider.hasClass("show")) {
+      // Remove any existing classes and then add fas and fa-search
+      $icon.attr("class", "fas fa-search"); // Set class to fas fa-search
+    } else {
+      // Remove any existing classes and then add fa-window-close
+      $icon.attr("class", "fa fa-window-close"); // Set class to fa fa-window-close
+    }
+    $slider.toggleClass("show");
   });
 });

@@ -9,12 +9,6 @@
   justify-content: space-between;
   gap: 10px;
 }
-.form-group {
-  width: 100%;
-}
-.form-group.mb-2 {
-  margin-bottom: 1rem !important;
-}
 select.categoryfilter,
 input[type="text"]#search {
   width: 100%;
@@ -77,27 +71,12 @@ li.article_list_202105030749 {
   flex-wrap: wrap;
 }
 
-.popup-container {
-  visibility: hidden;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-  transform: scale(1.3);
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(21, 17, 17, 0.61);
-  display: flex;
-  align-items: center;
-}
+
 
 .popup-content {
   margin: auto;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
-  width: 50%;
   background-color: #f8fafe;
   background-image: url(../img/backgroud-img.svg);
   background-position: top right;
@@ -270,27 +249,47 @@ ul#slider-id a {
   text-decoration: none;
 }
 
-#toggleButton {
-  position: fixed; /* Make it float */
-  bottom: 20px; /* Distance from the bottom */
-  right: 20px; /* Distance from the right */
-  z-index: 1000; /* Ensure it stays on top */
 
-  background-color: #007bff; /* Bootstrap primary blue, you can change it */
-  color: white; /* Icon color */
-  border-radius: 50%; /* Circle shape */
-  width: 50px; /* Width */
-  height: 50px; /* Height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for better visibility */
+#slider-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999; /* Ensure it's on top of other content */
+  text-align: right;
 }
 
-#toggleButton a {
-  color: white; /* Ensure the link inside the button is also white */
+#toggle-button {
+  background-color: crimson; /* Green background */
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  outline: none;
+  display: inline-block;
 }
 
-#toggleButton i {
-  font-size: 20px; /* Adjust icon size */
+#slider {
+  display: none; /* Initially hide the slider */
+  width: 300px; /* Adjust width as needed */
+  max-width: 80vw; /* Make it responsive */
+  padding: 10px;
+  margin-top: 10px;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  transition: all 0.3s ease; /* Smooth transition */
 }
+
+#slider.show {
+  display: block; /* Show the slider */
+}
+
+@media screen and (max-width: 600px) {
+  #slider-container {
+      /* bottom: auto;
+      top: 20px;
+      right: 50%;
+      transform: translateX(50%); */
+  }
+}
+

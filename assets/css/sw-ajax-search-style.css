@@ -31,8 +31,9 @@ label {
   align-items: center;
 }
 #response_wrap {
-  /* margin-top: 20px; */
   text-align: center;
+  height: 250px;
+  overflow: auto;
 }
 img#loader_img {
   position: absolute;

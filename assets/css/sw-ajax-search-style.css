@@ -54,7 +54,7 @@ img#loader_img {
 .sw_ajax_search_form_wrap a:focus {
   color: #4da6ff; /* Lighter color on hover/focus for visibility */
   text-decoration: underline; /* Adds underline on hover/focus for emphasis */
-}
+} 
 
 li.article_list_202105030749 {
   text-align: left;

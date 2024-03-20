@@ -10,13 +10,25 @@
  */
 
 // Shortcode for search form
-function sw_ajax_search_form_func()
+/* function sw_ajax_search_form_func()
 {
 	ob_start();
 	include plugin_dir_path(__FILE__) . 'sw-search-form.php';
 	return ob_get_clean();
 }
-add_shortcode('sw_ajax_search_form', 'sw_ajax_search_form_func');
+add_shortcode('sw_ajax_search_form', 'sw_ajax_search_form_func'); */
+
+
+/**
+ * Adds the SW Global Search form to the footer.
+ */
+function sw_global_search() {
+    $search_form_path = plugin_dir_path(__FILE__) . 'sw-search-form.php';
+    if (file_exists($search_form_path)) {
+        include $search_form_path;
+    }
+}
+add_action('wp_footer', 'sw_global_search');
 
 // Enqueue styles and scripts
 function sw_ajax_search_enqueue_styles()

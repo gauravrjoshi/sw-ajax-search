@@ -1,3 +1,7 @@
+<!-- 
+    SW GLOBAL SEARCH: START
+    Description: This section adds a global search form for SW (Stately World) to the website footer.
+-->
 <div id="sw-ajax-search-form-wrapper">
     <a href="#popup2">
         <div id="toggleButton" class="popup-link">
@@ -31,3 +35,4 @@
         </div>
     </div>
 </div>
+<!-- SW GLOBAL SEARCH: END -->

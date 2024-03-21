@@ -76,11 +76,13 @@ function stately_world_article_filter_function()
 
 	// Define the query args
 	$args = array(
+		'post_type'        => 'post',
 		'orderby'        => 'date',
 		'order'          => $order,
 		'posts_per_page' => 10,
 		'post_status'    => array('publish'),
 		's'              => $search,
+		'inclusive'       => false,
 	);
 
 	// If user is an admin, include 'private' and 'draft' post statuses
@@ -94,12 +96,15 @@ function stately_world_article_filter_function()
 	if ($query->have_posts()) {
 		while ($query->have_posts()) {
 			$query->the_post();
-			$data[] = [
-				'url' => esc_url(get_permalink()),
-				'title' => get_the_title(),
-				'status' => get_post_status(),
-				'date' => get_the_date(),
-			];
+			$content = get_the_content();
+			preg_match("/\b$search\b/i", $content, $matches); // Case insensitive match
+				$data[] = array(
+					'url'       => esc_url(get_permalink()),
+					'title'     => get_the_title(),
+					'status'    => get_post_status(),
+					'date'      => get_the_date(),
+					'paragraph'      => !empty($matches) ? $matches[0]: null,
+				);
 		}
 		wp_reset_postdata();
 	}

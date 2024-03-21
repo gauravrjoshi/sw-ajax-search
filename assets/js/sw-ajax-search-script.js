@@ -1,12 +1,4 @@
 jQuery(function ($) {
-  // Disable form submission on Enter key press
-  $("#filter").on("keydown", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      return false;
-    }
-  });
-
   var loader = $("#loader_img"),
     searchInput = $("input#search"),
     response = $("#response"),
@@ -38,10 +30,38 @@ jQuery(function ($) {
               const date = data[index].date;
               const title = data[index].title;
               const url = data[index].url;
-              html += `<li><a href="${url}" rel="bookmark" target="_self">${title}</a></li>`;
+              const paragraph = data[index].paragraph;
+              let para = '';
+              if (paragraph != null) {
+                para = `<br><span style="font-size: 10px;">${paragraph}<span>`;
+              }
+              html += `<li><a href="${url}" rel="bookmark" target="_self">${title} ${para}</a></li>`;
             }
             html += "</ul>";
             response.html(html); // insert data
+            // 			  START
+
+            const listItems = $('#slider-id li');
+            let selectedIndex = -1;
+
+            $(document).keydown(function (event) {
+              const key = event.key;
+              if (key === 'ArrowUp' || key === 'ArrowDown') {
+                event.preventDefault();
+                if (key === 'ArrowUp') {
+                  selectedIndex = (selectedIndex - 1 + listItems.length) % listItems.length;
+                } else {
+                  selectedIndex = (selectedIndex + 1) % listItems.length;
+                }
+                highlightItem(selectedIndex);
+              } else if (key === 'Enter' && selectedIndex !== -1) {
+                clickAnchor(selectedIndex);
+              }
+              else if (key === 'Escape') {
+                $("input#search").val('');
+              }
+            });
+            // 			  END
           } else {
             response.html(`<p>No results were found.</p>`); // insert data
           }
@@ -77,19 +97,76 @@ jQuery(function ($) {
     }
     $slider.toggleClass("show");
   });
-	
-	// Listen for keydown event
-    $(document).on('keydown', function(event) {
-      // Check if Ctrl is pressed and the key is 'K'
-      if (event.ctrlKey && event.which === 75) {
-        // Prevent the default action to avoid any browser shortcut conflicts
-        event.preventDefault();
-        
-        // Trigger the button click
-        $toggleButton.click();
-		 // Focus the search input field
-      	$('#search').focus();
-      }
-    });
 
+  // Listen for keydown event
+  $(document).on('keydown', function (event) {
+    // Check if Ctrl is pressed and the key is 'K'
+    if (event.ctrlKey && event.which === 75) {
+      // Prevent the default action to avoid any browser shortcut conflicts
+      event.preventDefault();
+
+      // Trigger the button click
+      $toggleButton.click();
+      // Focus the search input field
+      $('#search').focus();
+    }
+  });
+
+  function highlightItem(index) {
+    $('#slider-id li').removeClass('selected').eq(index).addClass('selected');
+    $("input#search").val($('#slider-id li').eq(index).text());
+  }
+
+  function clickAnchor(index) {
+    const anchor = $('#slider-id li').eq(index).find('a');
+    if (anchor.length) {
+      anchor[0].click();
+    }
+  }
+
+
+
+  //Make the DIV element draggagle:
+  dragElement(document.getElementById("mydiv"));
+
+  function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "header")) {
+      /* if present, the header is where you move the DIV from:*/
+      document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+    } else {
+      /* otherwise, move the DIV from anywhere inside the DIV:*/
+      elmnt.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    }
+
+    function closeDragElement() {
+      /* stop moving when mouse button is released:*/
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
+  }
 });

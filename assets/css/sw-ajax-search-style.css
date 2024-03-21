@@ -32,7 +32,6 @@ label {
 }
 #response_wrap {
   text-align: center;
-  height: 250px;
   overflow: auto;
 }
 img#loader_img {

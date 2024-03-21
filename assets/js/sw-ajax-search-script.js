@@ -7,7 +7,9 @@ jQuery(function ($) {
   loader.hide();
 
   searchInput.on("change, input", function () {
+    // height: 250px;
     var inputVal = $(this).val().trim(); // Get the current value of the input field.
+   
     if (inputVal.length >= 1) {
       // Check if the length of the input is exactly 3.
       var filter = $("#filter");
@@ -19,6 +21,7 @@ jQuery(function ($) {
           loader.show(); // changing the button label
           response.hide();
           clearSearchButton.hide();
+          jQuery("#response_wrap").css({'height':'unset'});
         },
         success: function (data) {
           loader.hide(); // changing the button label back
@@ -39,6 +42,7 @@ jQuery(function ($) {
             }
             html += "</ul>";
             response.html(html); // insert data
+            jQuery("#response_wrap").css({'height':'250px'});
             // 			  START
 
             const listItems = $('#slider-id li');
@@ -63,6 +67,7 @@ jQuery(function ($) {
             });
             // 			  END
           } else {
+            jQuery("#response_wrap").css({'height':'unset'});
             response.html(`<p>No results were found.</p>`); // insert data
           }
 
@@ -77,7 +82,8 @@ jQuery(function ($) {
 
   jQuery("#clearSearch").on("click", function (e) {
     e.preventDefault();
-    jQuery("#search").val(""); // Clear the search input
+    jQuery("#response_wrap").css({'height':'unset'});
+    // jQuery("#search").val(""); // Clear the search input
     jQuery("div#response").empty();
     jQuery("#search").focus(); // Optionally, bring focus back to the search input
   });
@@ -87,6 +93,7 @@ jQuery(function ($) {
   var $icon = $toggleButton.find("i"); // Find the <i> inside $toggleButton
 
   $toggleButton.click(function () {
+    jQuery("#response_wrap").css({'height':'unset'});
     console.log($slider.attr("class"));
     if ($slider.hasClass("show")) {
       // Remove any existing classes and then add fas and fa-search

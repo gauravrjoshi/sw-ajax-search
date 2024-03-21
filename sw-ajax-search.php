@@ -19,7 +19,7 @@ class SwAjaxSearch
 	{
 		// Retrieve option value from the database
 		$this->sw_enable_global_search_checked = get_option('sw_ajax_search_enable_global_search', '0');
-		
+
 		$this->sw_plugin_dir_path = plugin_dir_path(__FILE__);
 
 		// Admin menu
@@ -59,11 +59,15 @@ class SwAjaxSearch
 	// Callback function to display the page content
 	function sw_ajax_search_page()
 	{
-		// Check if form is submitted
-		if (isset($_POST['sw_ajax_search_submit'])) {
-			// Save the option value in the database
-			$enable_global_search = isset($_POST['enable_global_search']) ? '1' : '0';
+		// Check if form is submitted and nonce is valid
+		if (isset($_POST['sw_ajax_search_submit']) && isset($_POST['sw_ajax_search_nonce']) && wp_verify_nonce($_POST['sw_ajax_search_nonce'], 'sw_ajax_search_nonce')) {
+			// Sanitize and validate input data
+			$enable_global_search = isset($_POST['enable_global_search']) ? sanitize_text_field($_POST['enable_global_search']) : '0';
+
+			// Update option value in the database
 			update_option('sw_ajax_search_enable_global_search', $enable_global_search);
+
+			// Display success message
 			echo '<div class="updated"><p>Settings saved.</p></div>';
 		}
 

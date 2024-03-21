@@ -7,7 +7,7 @@ Stable tag: 1.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-SW Ajax Search is a WordPress plugin that enables AJAX-powered search functionality on your website. This plugin provides a customizable search form that allows users to perform searches without refreshing the page. Additionally, it includes an option to enable or disable global search functionality.
+SW Ajax Search is a WordPress plugin that enables AJAX-powered search functionality on your website. 
 
 == Description ==
 

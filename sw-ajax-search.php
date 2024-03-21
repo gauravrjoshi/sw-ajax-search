@@ -12,13 +12,14 @@
 class SwAjaxSearch
 {
 
-	protected $enable_global_search_checked;
+	protected $sw_enable_global_search_checked;
 	protected $sw_plugin_dir_path;
 
 	public  function __construct()
 	{
 		// Retrieve option value from the database
-		$this->enable_global_search_checked = get_option('sw_ajax_search_enable_global_search', '0');
+		$this->sw_enable_global_search_checked = get_option('sw_ajax_search_enable_global_search', '0');
+		
 		$this->sw_plugin_dir_path = plugin_dir_path(__FILE__);
 
 		// Admin menu
@@ -31,12 +32,12 @@ class SwAjaxSearch
 		add_action('wp_enqueue_scripts', array($this, 'sw_ajax_search_enqueue_styles'));
 
 		// AJAX actions
-		add_action('wp_ajax_stately_world_article_filter', array($this, 'stately_world_article_filter_function'));
-		add_action('wp_ajax_nopriv_stately_world_article_filter', array($this, 'stately_world_article_filter_function'));
+		add_action('wp_ajax_sw_search_filter', array($this, 'sw_search_filter_function'));
+		add_action('wp_ajax_nopriv_sw_search_filter', array($this, 'sw_search_filter_function'));
 
 
 		// Add action hook if global search is enabled
-		if ($this->enable_global_search_checked == '1') {
+		if ($this->sw_enable_global_search_checked == '1') {
 			add_action('wp_footer', array($this, 'sw_global_search'));
 		}
 	}
@@ -75,7 +76,7 @@ class SwAjaxSearch
 	function sw_ajax_search_form_func()
 	{
 		// Add action hook if global search is enabled
-		if ($this->enable_global_search_checked == '1') {
+		if ($this->sw_enable_global_search_checked == '1') {
 			return null;
 		} else {
 			ob_start();
@@ -111,11 +112,12 @@ class SwAjaxSearch
 		// Create a nonce and pass it to the script
 		wp_localize_script('sw-ajax-search-script', 'sw_ajax_search_params', array(
 			'ajax_url' => admin_url('admin-ajax.php'),
+			'action' => 'sw_search_filter',
 			'nonce' => wp_create_nonce('sw_ajax_search_nonce'), // Create nonce
 		));
 	}
 
-	function stately_world_article_filter_function()
+	function sw_search_filter_function()
 	{
 		// Verify nonce
 		if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'sw_ajax_search_nonce')) {

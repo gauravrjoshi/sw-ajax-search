@@ -13,7 +13,7 @@ jQuery(function ($) {
       var filter = $("#filter");
       $.ajax({
         url: sw_ajax_search_params.ajax_url,
-        data: filter.serialize() + "&security=" + sw_ajax_search_params.nonce, // form data
+        data: filter.serialize() + "&security=" + sw_ajax_search_params.nonce + "&action=" + sw_ajax_search_params.action, // form data
         type: filter.attr("method"), // POST
         beforeSend: function (xhr) {
           loader.show(); // changing the button label

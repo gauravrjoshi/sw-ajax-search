@@ -38,7 +38,7 @@ jQuery(function ($) {
               const date = data[index].date;
               const title = data[index].title;
               const url = data[index].url;
-              html += `<li><a href="${url}" rel="bookmark" target="_blank">${title} <span style="color: #ef7f1a;">(${date})</span></a></li>`;
+              html += `<li><a href="${url}" rel="bookmark" target="_self">${title}</a></li>`;
             }
             html += "</ul>";
             response.html(html); // insert data
@@ -77,4 +77,19 @@ jQuery(function ($) {
     }
     $slider.toggleClass("show");
   });
+	
+	// Listen for keydown event
+    $(document).on('keydown', function(event) {
+      // Check if Ctrl is pressed and the key is 'K'
+      if (event.ctrlKey && event.which === 75) {
+        // Prevent the default action to avoid any browser shortcut conflicts
+        event.preventDefault();
+        
+        // Trigger the button click
+        $toggleButton.click();
+		 // Focus the search input field
+      	$('#search').focus();
+      }
+    });
+
 });

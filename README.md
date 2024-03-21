@@ -1,44 +1,59 @@
-# SW Ajax Search Plugin
+=== SW Ajax Search ===
+Contributors: Gaurav Joshi
+Tags: search, ajax, shortcode
+Requires at least: 4.6
+Tested up to: 5.9
+Stable tag: 1.7.6
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-## Description
-SW Ajax Search is a WordPress plugin that enables you to add an AJAX-powered search form to your website using a simple shortcode.
+SW Ajax Search is a WordPress plugin that enables AJAX-powered search functionality on your website. This plugin provides a customizable search form that allows users to perform searches without refreshing the page. Additionally, it includes an option to enable or disable global search functionality.
 
-## Features
-- Easily add a search form to your WordPress site.
-- Utilizes AJAX for seamless search functionality without page reloads.
-- Customizable search form shortcode for flexibility in placement and styling.
+== Description ==
 
-## Installation
-1. Download the plugin zip file from [WordPress.org](http://wordpress.org/plugins/hello-dolly/).
-2. Upload the plugin to your WordPress site's plugin directory (`wp-content/plugins/`).
-3. Activate the plugin through the WordPress admin interface.
+SW Ajax Search simplifies the search experience for users on your WordPress website by implementing AJAX-based search functionality. This plugin allows you to insert a search form anywhere on your site using a simple shortcode.
 
-## Usage
-To add the SW Ajax Search form to your site, simply use the shortcode `[sw_ajax_search_form]` in your post, page, or widget area.
+Key features include:
+- **AJAX-Powered Search**: Enable seamless search functionality that delivers results instantly without page reloads.
+- **Customizable Search Form**: Easily customize the appearance and behavior of the search form to match your site's design.
+- **Global Search Option**: Optionally enable a global search feature that displays the search form across all pages of your website.
+- **Secure and Efficient**: Built with security and performance in mind, ensuring smooth search operations while protecting against malicious attacks.
+- **User-Friendly Interface**: Enhance the user experience by providing a fast and intuitive search interface that keeps visitors engaged.
 
-## Frequently Asked Questions
-### Can I customize the search form?
-Yes, you can customize the search form by modifying the plugin's CSS or by using additional attributes in the shortcode for styling purposes.
+To insert the search form into your posts, pages, or custom post types, simply use the `[sw_ajax_search_form]` shortcode. You can also enable or disable the global search feature via the plugin settings in the WordPress admin area.
 
-### Does this plugin support custom post types?
-Yes, SW Ajax Search works with custom post types out of the box.
+For more information and documentation, visit the [SW Ajax Search plugin page](https://wordpress.org/plugins/sw-ajax-search).
 
-## Changelog
-### Version 1.7.2
-- Fixed a bug causing incorrect search results in certain scenarios.
+== Installation ==
 
-### Version 1.7.1
-- Improved compatibility with the latest versions of WordPress.
+1. Upload the `sw-ajax-search` folder to the `/wp-content/plugins/` directory or install the plugin through the WordPress plugins screen directly.
+2. Activate the plugin through the 'Plugins' screen in WordPress.
+3. Use the `[sw_ajax_search_form]` shortcode to display the search form on your site.
+4. Optionally, configure the plugin settings via the 'SW AJAX Search' menu in the WordPress admin area.
 
-### Version 1.7.0
-- Added support for custom post types.
-- Improved AJAX functionality for faster search results.
+== Frequently Asked Questions ==
 
-## Author
-SW Ajax Search plugin is developed by [Gaurav Joshi](https://statelyworld.com/).
+= How do I customize the search form? =
 
-## Support
-For support or inquiries, please visit the [plugin support forum](https://wordpress.org/support/plugin/hello-dolly/).
+You can customize the search form by modifying the included template file (`sw-search-form.php`) or by adding custom CSS styles to match your site's design.
 
-## License
-This plugin is released under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.en.html).
+= Can I enable global search across my entire website? =
+
+Yes, you can enable global search functionality via the plugin settings in the WordPress admin area. Simply check the 'Enable Global Search' option to display the search form globally.
+
+== Changelog ==
+
+= 1.7.6 =
+* Added option to enable global search functionality.
+* Improved AJAX search performance and security.
+* Updated Font Awesome to version 5.15.4.
+
+= 1.7.5 =
+* Fixed compatibility issues with WordPress 5.9.
+* Enhanced search form customization options.
+* Resolved minor bugs and improved plugin stability.
+
+== Upgrade Notice ==
+
+= 1.7.6 =
+This version introduces a new feature to enable global search functionality. Make sure to check the plugin settings after updating.

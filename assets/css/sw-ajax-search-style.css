@@ -1,0 +1,296 @@
+.sw_ajax_search_form_wrap {
+  margin: auto;
+  color: #fff;
+  border-radius: 8px;
+}
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+select.categoryfilter,
+input[type="text"]#search {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid #555;
+  background-color: #222;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 16px;
+}
+input[type="radio"] + i.fa {
+  /* margin-right: 5px; */
+  color: #fff;
+}
+label {
+  cursor: pointer;
+  font-size: 16px;
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+}
+#response_wrap {
+  text-align: center;
+  overflow: auto;
+}
+img#loader_img {
+  position: absolute;
+  right: 4px;
+  top: 12px;
+  width: 35px;
+}
+.form-inline label input[type="radio"] {
+  margin-right: 8px;
+}
+
+.sw_ajax_search_form_wrap a {
+  color: #000000; /* Bright blue color for links to stand out */
+  text-decoration: none; /* Removes underline from links */
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.sw_ajax_search_form_wrap a:hover,
+.sw_ajax_search_form_wrap a:focus {
+  color: #4da6ff; /* Lighter color on hover/focus for visibility */
+  text-decoration: underline; /* Adds underline on hover/focus for emphasis */
+}
+
+li.article_list_202105030749 {
+  text-align: left;
+}
+
+.sw_ajax_search_form_wrap .form-group {
+  width: 49%;
+}
+
+/*  */
+
+.popup-link {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.popup-content {
+  margin: auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #f8fafe;
+  background-image: url(../img/backgroud-img.svg);
+  background-position: top right;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  box-shadow: 0px 8px 30px 0px rgba(0, 58.00000000000005, 140, 0.22);
+  transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+}
+.popup-content p {
+  font-size: 17px;
+  padding: 0px;
+  line-height: 20px;
+  color: red;
+  text-align: left;
+  margin: 0;
+}
+.popup-content a.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 16px;
+  font-weight: bold;
+  background: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  position: relative;
+  top: -24px;
+  right: -18px;
+}
+
+.popup-content a.close:hover {
+  color: #333;
+}
+
+.popup-content span:hover,
+.popup-content span:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popup-container:target {
+  visibility: visible;
+  opacity: 1;
+  /* transform: scale(1); */
+}
+
+.popup-container h3 {
+  margin: 10px;
+}
+/*End popup styles*/
+
+/* Additional styles */
+.popup-style-2 {
+  opacity: 0; /* Start with opacity 0 to ensure it's invisible before animation starts */
+  animation-name: fadeInOpacity;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-in-out; /* Adjusted for smoother transition */
+  animation-duration: 0.5s; /* Adjusted for a quicker, smoother effect */
+  animation-fill-mode: forwards; /* Ensures the element remains visible after animation */
+}
+
+@keyframes fadeInOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.row {
+  margin: 0;
+  padding: 0;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+  margin: 2px auto;
+  display: flex;
+}
+
+.search-wrapper input[type="text"] {
+  width: 100%;
+  padding: 10px 45px 10px 35px; /* Adjust the padding to not overlap the icons */
+  border: 2px solid #333;
+  border-radius: 25px;
+  font-size: 16px;
+}
+
+.search-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: 4px;
+  fill: #333; /* Icon color */
+}
+
+#clearSearch {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #333;
+  font-size: 20px;
+  display: none; /* Hide by default */
+}
+
+#search:valid ~ #clearSearch {
+  display: block; /* Show clear button when input is not empty */
+}
+
+#search {
+  width: 100%;
+  padding: 10px 40px 10px 15px; /* Adjust padding to make space for the search icon */
+  border: 2px solid #333; /* Border color */
+  background-color: #fff; /* Background color */
+  color: #333; /* Text color */
+  border-radius: 20px; /* Rounded borders for the input */
+  font-size: 16px; /* Font size */
+}
+
+.fa-search.search-icon {
+  position: absolute;
+  right: 10px;
+  color: #333; /* Icon color */
+}
+
+/* Adjust the search icon size if using FontAwesome */
+.fa-search {
+  font-size: 20px;
+}
+
+#sw-ajax-search-form-wrapper #search {
+  width: 100%;
+  padding: 12px 35px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px; /* Rounded borders */
+  box-sizing: border-box; /* Make sure padding does not affect the box size */
+  background-color: #f8f8f8; /* Light grey background */
+  color: #333; /* Dark grey text */
+  font-size: 16px; /* Slightly larger font size */
+  transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out,
+    background-color 0.3s ease; /* Smooth transition for focus effects */
+}
+
+#sw-ajax-search-form-wrapper #search:focus {
+  border-color: #4a90e2; /* Change border color on focus */
+  box-shadow: 0 0 8px rgba(74, 144, 226, 0.5); /* Add a soft glow effect */
+  background-color: #ffffff; /* Change background to white on focus */
+  outline: none; /* Remove the default focus outline */
+}
+
+ul#slider-id {
+  text-align: left;
+  list-style-type: disclosure-closed;
+  color: #ef801c;
+  padding-left: 18px;
+  font-size: 18px;
+}
+
+ul#slider-id a {
+  text-decoration: none;
+}
+
+#sw-ajax-search-form-wrapper {
+  position: fixed;
+  bottom: 16%;
+  right: 20px;
+  z-index: 9999; /* Ensure it's on top of other content */
+  text-align: right;
+  cursor: move;
+}
+
+#toggle-button {
+  background-color: #ef7f1a; /* Green background */
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 50%;
+  outline: none;
+  display: inline-block;
+}
+
+#slider {
+  display: none; /* Initially hide the slider */
+  padding: 10px;
+  width: 300px;
+  margin: auto;
+  overflow: hidden; /* Ensure content doesn't overflow */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+#slider.show {
+  display: block; /* Show the slider */
+}
+
+@media screen and (max-width: 600px) {
+  #slider-container {
+    /* bottom: auto;
+      top: 20px;
+      right: 50%;
+      transform: translateX(50%); */
+  }
+}
+.sw_ajax_search_form_wrap .selected {
+  background-color: lightblue;
+}
